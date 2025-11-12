@@ -1,33 +1,30 @@
 #include <fstream>
 #include <iostream>
+#include <string>
 
 int	main(int argc, char **argv)
 {
 	std::string	text;
-	std::string inPath;
-	std::string outPath;
 
 	if (argc == 4)
 	{
-		std::ofstream	outputFile;
-		std::ifstream	inputFile;
-		std::string sub = argv[3];
 		std::string search = argv[2];
+		std::fstream inputFile(argv[1]);
+		std::ofstream outputFile(((std::string)argv[1] + ".replace").c_str());
 		std::size_t searchSize = search.size();
-		inPath = argv[1];
-		outPath = inPath + ".replace";
-		inputFile.open(inPath.c_str());
-		outputFile.open(outPath.c_str());
-
+		if (!searchSize || !inputFile)
+		{
+			std::cout << "Problem with string search size or reading from input file" << std::endl;
+			return (0);
+		}
 		while (getline(inputFile, text))
 		{
 			std::string temp;
-
-			std::size_t	found = text.find(argv[2]);
+			std::size_t	found = text.find(search);
 			while (found != std::string::npos)
 			{
 				temp = text.substr(0, found);
-				temp.append(sub);
+				temp.append(argv[3]);
 				temp.append(text, found + searchSize);
 				text = temp;
 				found = text.find(argv[2]);
@@ -37,6 +34,5 @@ int	main(int argc, char **argv)
 	}
 	else
 		std::cout << "You must input a filename and two strings" << std::endl;
-
 	return (0);
 }
