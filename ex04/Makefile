@@ -11,6 +11,9 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(CXX) $(FLAGS) $(OBJS) -o $(NAME)
 
+debug:
+	g++ $(SRC) -o $(NAME) -g
+
 .cpp.o:
 	$(CXX) $(FLAGS) -c $< -o $@
 
