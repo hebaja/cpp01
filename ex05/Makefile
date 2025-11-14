@@ -1,7 +1,7 @@
 CXX = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = Harl
-SRC = main.cpp
+SRC = main.cpp Harl.cpp
 SRC_DIR = .
 SRCS=$(addprefix $(SRC_DIR)/, $(SRC))
 OBJS = $(SRCS:.cpp=.o)
