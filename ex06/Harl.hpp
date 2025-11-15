@@ -9,10 +9,19 @@ class Harl
 		void	info(void);
 		void	warning(void);
 		void	error(void);
+		typedef void (Harl::*PtrComplain)(void);
 
 	public:
+		enum Param
+		{
+			Debug,
+			Info,
+			Warning,
+			Error,
+			Unknown
+		};
 		Harl();
 		~Harl();
 		void	complain(std::string level);
-		typedef void (Harl::*PtrComplain)(void);
+		void	filter(std::string param);
 };
