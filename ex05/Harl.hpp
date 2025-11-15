@@ -9,10 +9,10 @@ class Harl
 		void	info(void);
 		void	warning(void);
 		void	error(void);
+		typedef void (Harl::*ptrComplain)(void);
 
 	public:
 		Harl();
 		~Harl();
 		void	complain(std::string level);
-		typedef void (Harl::*ptrComplain)(void);
 };
