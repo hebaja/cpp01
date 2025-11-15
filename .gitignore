@@ -3,5 +3,6 @@ ex02/Brain
 ex03/Violence
 ex04/Sed
 ex05/Harl
+ex06/harlFilter
 *.o
 *.out
