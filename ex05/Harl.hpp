@@ -14,4 +14,5 @@ class Harl
 		Harl();
 		~Harl();
 		void	complain(std::string level);
+		typedef void (Harl::*ptrComplain)(void);
 };

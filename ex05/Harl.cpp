@@ -37,14 +37,19 @@ void	Harl::error(void)
 
 void	Harl::complain(std::string level)
 {
+	ptrComplain p;
+
+	p = NULL;
 	if (level.empty())
 		return ;
 	if (level.compare("debug") == 0)
-		this->debug();
+		p = &Harl::debug;
 	if (level.compare("info") == 0)
-		this->info();
+		p = &Harl::info;
 	if (level.compare("warning") == 0)
-		this->warning();
+		p = &Harl::warning;
 	if (level.compare("error") == 0)
-		this->error();
+		p = &Harl::error;
+	if (p)
+		(this->*p)();
 }
